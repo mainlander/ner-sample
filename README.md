@@ -6,6 +6,8 @@
 * dataload.py : 載入訓練與測試資料集
 * train.py : 訓練步驟實作
 * predict.py : 完成訓練後，可輸入句子取得辨識結果
+* ner_model.h5 : 訓練出來的模型參數檔 (predict.py需用到)
+* word2idx.pkl : 記錄 word 與其 id 對應的 dictionary pickle
 
 ## 目錄說明
 * data : 訓練資料與測試資料目錄
