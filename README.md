@@ -18,6 +18,7 @@
 * TensorFlow
 * Keras
 * numpy
+* gensim
 
 ## 進行訓練
     python train.py
