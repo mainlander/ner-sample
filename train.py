@@ -54,7 +54,7 @@ if param.USE_PRETRAINED_EMBEDDING:
     from gensim import models
 
     w2v_model = models.Word2Vec.load("embedding/zh.bin")
-    embedding_matrix = np.zeros((n_words, 300)) # 目前pre-trained的向量是300維
+    embedding_matrix = np.zeros((n_words, param.EMBEDDING_DIMENSION)) # 目前pre-trained的向量是300維
     for w, i in word2idx.items():
         if w in w2v_model:
             embedding_vector = w2v_model[w]
