@@ -12,16 +12,19 @@ wordf = open("word2idx.pkl", 'rb')
 word2idx = pickle.load(wordf)
 n_words = len(word2idx)
 
+embedding_matrix = None
+# 如果要使用預訓練的詞向量，載入pre-trained word2vec
+if param.USE_PRETRAINED_EMBEDDING:
 #載入pre-trained word2vec
-from gensim.models import word2vec
-from gensim import models
+    from gensim.models import word2vec
+    from gensim import models
 
-w2v_model = models.Word2Vec.load("embedding/zh.bin")
-embedding_matrix = np.zeros((n_words, param.EMBEDDING_DIMENSION))
-for w, i in word2idx.items():
-    if w in w2v_model:
-        embedding_vector = w2v_model[w]
-        embedding_matrix[i] = embedding_vector
+    w2v_model = models.Word2Vec.load("embedding/zh.bin")
+    embedding_matrix = np.zeros((n_words, param.EMBEDDING_DIMENSION))
+    for w, i in word2idx.items():
+        if w in w2v_model:
+            embedding_vector = w2v_model[w]
+            embedding_matrix[i] = embedding_vector
 
 # 建立雙向 LSTM 模型
 model = bilstm.createModel(n_words, n_tags, param.SENTENCE_MAX_LEN, embedding_matrix) 
